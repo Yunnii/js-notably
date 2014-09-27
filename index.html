@@ -627,18 +627,308 @@
             <h2 class="top">Вызов в контексте "метода"</h2>
             <pre class="javascript">
                 <code>var person = {</code>
-                <code>  sums</code>
-                <code>  console.log(this);</code>
+                <code>  sums: 100,</code>
+                <code>  getPerson: function() {</code>
+                <code>      return this.sums;</code>
+                <code>  }</code>
                 <code>};</code>
+                <code>person.getPerson();</code>
+                <code>person['getPerson']();</code>
             </pre>
         </div>
         <div class="hidden">
         </div>
     </div></section>
-	<!--
-		To hide progress bar from entire presentation
-		just remove “progress” element.
-		-->
+    <section class="slide"><div>
+        <div>
+            <h2 class="top">Вызов в контексте "метода"</h2>
+            <pre class="javascript">
+                <code>var person = {</code>
+                <code>  sums: 100,</code>
+                <code>  getPerson: function() {</code>
+                <code>      return this.sums;</code>
+                <code>  }</code>
+                <code>};</code>
+                <code>person.getPerson();<mark>// 100</mark></code>
+                <code>person['getPerson']();<mark>// 100</mark></code>
+            </pre>
+        </div>
+        <div class="hidden">
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <h2 class="top">Смешанный способ<br/> (добавляем метод после создания)</h2>
+            <pre class="javascript">
+                <code>var person = {</code>
+                <code>  sums: 100,</code>
+                <code>  getPerson: function() {</code>
+                <code>      return this.sums;</code>
+                <code>  }</code>
+                <code>};</code>
+                <code>person.printPerson = function(){ console.log(this.sums)};</code>
+                <code>person.printPerson();</code>
+                <code>person['getPerson']();</code>
+            </pre>
+        </div>
+        <div class="hidden">
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <h2 class="top">Смешанный способ<br/> (добавляем метод после создания)</h2>
+            <pre class="javascript">
+                <code>var person = {</code>
+                <code>  sums: 100,</code>
+                <code>  getPerson: function() {</code>
+                <code>      return this.sums;</code>
+                <code>  }</code>
+                <code>};</code>
+                <code>person.printPerson = function(){ console.log(this.sums)};</code>
+                <code>person.printPerson();<mark>// 100</mark></code>
+                <code>person['getPerson']();<mark>// 100</mark></code>
+            </pre>
+        </div>
+        <div class="hidden">
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <h2 class="top">New</h2>
+            <pre class="javascript">
+                <code>var createCircle = function(x, y){</code>
+                <code>  var result = {};</code>
+                <code>  result.x = 12;</code>
+                <code>  result.y = 14;</code>
+                <code>  return result;</code>
+                <code>};</code>
+                <code>var circle = createCircle();</code>
+                <code>console.log(circle.x);</code>
+                <code>console.log(circle.y);</code>
+            </pre>
+        </div>
+        <div class="hidden">
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <h2 class="top">New</h2>
+            <pre class="javascript">
+                <code>var createCircle = function(x, y){</code>
+                <code>  var result = {};</code>
+                <code>  result.x = 12;</code>
+                <code>  result.y = 14;</code>
+                <code>  return result;</code>
+                <code>};</code>
+                <code>var circle = createCircle();</code>
+                <code>console.log(circle.x);<mark>// 12</mark></code>
+                <code>console.log(circle.y);<mark>// 14</mark></code>
+            </pre>
+        </div>
+        <div class="hidden">
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <h2 class="top">New</h2>
+            <pre class="javascript">
+                <code>var Circle = function(x, y){</code>
+                <code>  this.x = 12;</code>
+                <code>  this.y = 14;</code>
+                <code>};</code>
+                <code>var circle = new Circle();</code>
+                <code>console.log(circle.x);</code>
+                <code>console.log(circle.y);</code>
+            </pre>
+        </div>
+        <div class="hidden">
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <h2 class="top">New</h2>
+            <pre class="javascript">
+                <code>var Circle = function(x, y){</code>
+                <code>  this.x = 12;</code>
+                <code>  this.y = 14;</code>
+                <code>};</code>
+                <code>var circle = new Circle();</code>
+                <code>console.log(circle.x);<mark>// 12</mark></code>
+                <code>console.log(circle.y);<mark>// 14</mark></code>
+            </pre>
+        </div>
+        <div class="hidden">
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <h2 class="top">Apply and Call</h2>
+            <pre class="javascript">
+                <code>var person = {</code>
+                <code>  fio: 'Mr Bill'</code>
+                <code>};</code>
+                <code>function sendMessage(from, message) {</code>
+                <code>  console.log("from " + from + " to " + this.fio + ": " + message);</code>
+                <code>};</code>
+                <code>sendMessage.call(person, "Mr Smith", "hello");</code>
+            </pre>
+        </div>
+        <div class="hidden">
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <h2 class="top">Apply and Call</h2>
+            <pre class="javascript">
+                <code>var person = {</code>
+                <code>  fio: 'Mr Bill'</code>
+                <code>};</code>
+                <code>function sendMessage(from, message) {</code>
+                <code>  console.log("from: " + from + " to " + this.fio + ": " + message);</code>
+                <code><mark>from Mr Smith to <mark class="important">Mr Bill</mark>: hello</mark></code>
+                <code>};</code>
+                <code>sendMessage.call(person, "Mr Smith", "hello");</code>
+            </pre>
+        </div>
+        <div class="hidden">
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <h2 class="top">Apply and Call</h2>
+            <pre class="javascript">
+                <code>var person = {</code>
+                <code>  fio: 'Mr Bill'</code>
+                <code>};</code>
+                <code>function sendMessage(from, message) {</code>
+                <code>  console.log("from " + from + " to " + this.fio + ": " + message);</code>
+                <code>};</code>
+                <code>sendMessage.apply(person, ["Mr Smith", "hello"]);</code>
+            </pre>
+        </div>
+        <div class="hidden">
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <h2 class="top">Apply and Call</h2>
+            <pre class="javascript">
+                <code>var person = {</code>
+                <code>  fio: 'Mr Bill'</code>
+                <code>};</code>
+                <code>function sendMessage(from, message) {</code>
+                <code>  console.log("from: " + from + " to " + this.fio + ": " + message);</code>
+                <code><mark>from Mr Smith to <mark class="important">Mr Bill</mark>: hello</mark></code>
+                <code>};</code>
+                <code>sendMessage.apply(person, ["Mr Smith", "hello"]);</code>
+            </pre>
+        </div>
+        <div class="hidden">
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <h2 class="top">Фиксация контекста.  Bind</h2>
+            <pre class="javascript">
+                <code>this.x = 17;</code>
+                <code>this.getX = function(){</code>
+                <code>  return this.x;</code>
+                <code>}</code>
+                <code>$("#button").click(function(){</code>
+                <code>  console.log(this.getX());</code>
+                <code>});</code>
+            </pre>
+        </div>
+        <div class="hidden">
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <h2 class="top">Фиксация контекста.  Bind</h2>
+            <pre class="javascript">
+                <code>this.x = 17;</code>
+                <code>this.getX = function(){</code>
+                <code>  return this.x;</code>
+                <code>}</code>
+                <code>$("#button").click(function(){</code>
+                <code>  console.log(this.getX());</code>
+                <code> <mark class="important">Uncaught TypeError: undefined is not a function </mark></code>
+                <code>});</code>
+            </pre>
+        </div>
+        <div class="hidden">
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <h2 class="top">Фиксация контекста.  Bind</h2>
+            <pre class="javascript">
+                <code>this.x = 17;</code>
+                <code>this.getX = function(){</code>
+                <code>  return this.x;</code>
+                <code>}</code>
+                <code>var self = this;</code>
+                <code>$("#button").click(function(){</code>
+                <code>  console.log(self.getX());</code>
+                <code>});</code>
+            </pre>
+        </div>
+        <div class="hidden">
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <h2 class="top">Фиксация контекста.  Bind</h2>
+            <pre class="javascript">
+                <code>this.x = 17;</code>
+                <code>this.getX = function(){</code>
+                <code>  return this.x;</code>
+                <code>}</code>
+                <code><mark class>var self = this;</mark></code>
+                <code>$("#button").click(function(){</code>
+                <code>  console.log(self.getX());<mark>//17</mark></code>
+                <code>});</code>
+            </pre>
+        </div>
+        <div class="hidden">
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <h2 class="top">Фиксация контекста.  Bind</h2>
+            <pre class="javascript">
+                <code>this.x = 17;</code>
+                <code>this.getX = function(){</code>
+                <code>  return this.x;</code>
+                <code>}</code>
+                <code>$("#button").click(function(){</code>
+                <code>  console.log(this.getX());</code>
+                <code>}.bind(this));</code>
+            </pre>
+        </div>
+        <div class="hidden">
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <h2 class="top">Фиксация контекста.  Bind</h2>
+            <pre class="javascript">
+                <code>this.x = 17;</code>
+                <code>this.getX = function(){</code>
+                <code>  return this.x;</code>
+                <code>}</code>
+                <code>$("#button").click(function(){</code>
+                <code>  console.log(this.getX());<mark>//17</mark></code>
+                <code>}.bind(this));</code>
+            </pre>
+        </div>
+        <div class="hidden">
+        </div>
+    </div></section>
+    <!--
+        To hide progress bar from entire presentation
+        just remove “progress” element.
+        -->
 	<div class="progress"><div></div></div>
 
     <script src="./js/jquery.min.js"></script>
