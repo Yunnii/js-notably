@@ -1,11 +1,15 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-	<title>Shower Presentation Engine</title>
+	<title>Лекция</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=792, user-scalable=no">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen.css">
+    <link rel="stylesheet" href="./css/screen.css">
+    <link rel="stylesheet" href="./css/print.css" media="print">
+    <link rel="stylesheet" href="./css/idea.min.css">
+    <link rel="stylesheet" href="./css/user.css">
 </head>
 <body class="list">
 	<header class="caption">
@@ -13,163 +17,634 @@
 		<p>Yours Truly, Famous Inc.</p>
 	</header>
 	<section class="slide cover" id="Cover"><div>
-		<h2>Shower Presentation Engine</h2>
-		<p>Brought to you by <a href="http://pepelsbey.net">Vadim Makeev</a></p>
-		<img src="pictures/cover.jpg" alt="">
-		<!--
-			To apply styles to the certain slides
-			set slide ID to get needed elements
-			-->
-		<style>
-			#Cover h2 {
-				margin:30px 0 0;
-				color:#FFF;
-				text-align:center;
-				font-size:70px;
-				}
-			#Cover p {
-				margin:10px 0 0;
-				text-align:center;
-				color:#FFF;
-				font-style:italic;
-				font-size:20px;
-				}
-				#Cover p a {
-					color:#FFF;
-					}
-		</style>
+        <img src="pictures/preview.jpg" alt="">
 	</div></section>
 	<section class="slide"><div>
-		<h2>Shower Key Features</h2>
-		<ol>
-			<li>Built on HTML, CSS and vanilla JavaScript</li>
-			<li>All modern browsers are supported</li>
-			<li>Slide themes are separated from engine</li>
-			<li>Fully keyboard accessible</li>
-			<li>Printable to PDF</li>
-		</ol>
-		<p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>
+        <img src="pictures/javascript.jpg" alt="" class="img-cover">
+        <div class="hidden">
+            Джаваскрипт отличается от других языков с++ java csharp, в нем много своеобразностей и особенностей.
+            С некоторыми из базовых особенностей я вас познакомлю сегодня на лекции.
+        </div>
 	</div></section>
-	<section class="slide"><div>
-		<h2>Plain Text on Your Slides</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur <a href="#4">adipisicing</a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <em>quis nostrud</em> exercitation ullamco laboris <strong>nisi ut aliquip</strong> ex ea commodo consequat. Duis aute irure <i>dolor</i> in reprehenderit in voluptate velit esse cillum <b>dolore</b> eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in <code>&lt;culpa&gt;</code> qui officia deserunt mollit anim id est laborum.</p>
-	</div></section>
-	<section class="slide"><div>
-		<h2>All Kind of Lists</h2>
-		<ol>
-			<li>Simple lists are marked with bullets</li>
-			<li>Ordered lists begin with a number</li>
-			<li>You can even nest lists one inside another
-				<ul>
-					<li>Or mix their types</li>
-					<li>But do not go too far</li>
-					<li>Otherwise audience will be bored</li>
-				</ul>
-			</li>
-			<li>Look, seven rows exactly!</li>
-		</ol>
-	</div></section>
-	<section class="slide"><div>
-		<h2>Serious Citations</h2>
-		<figure>
-			<blockquote>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-			</blockquote>
-			<figcaption>Marcus Tullius Cicero</figcaption>
-		</figure>
-	</div></section>
-	<section class="slide"><div>
-		<h2>Code Samples</h2>
-		<pre>
-			<code>&lt;!DOCTYPE html&gt;</code>
-			<code>&lt;html lang="en"&gt;</code>
-			<code><mark>&lt;head&gt;</mark> <mark class="comment">&lt;!--Comment--&gt;</mark></code>
-			<code>    &lt;title&gt;Shower&lt;/title&gt;</code>
-			<code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
-			<code>    &lt;link rel="stylesheet" href="screen.css"&gt;</code>
-			<code><mark>&lt;/head&gt;</mark></code>
+    <section class="slide" class="img-cover" style="background: url('pictures/hoisting.jpeg'); background-size: cover "><div>
+        <h2 style="color: #fff; background: #333;">
+            Всплытие. Hoisting
+        </h2>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <pre class="javascript">
+                <code>function(){</code>
+                <code>  var result = [];</code>
+                <code>  for (var i = 0; i < 10; i++) {</code>
+                <code>      var a = i*i;</code>
+                <code>      result.push(a);</code>
+                <code>  }</code>
+                <code>}</code>
+            </pre>
+        </div>
+        <div class="hidden">
+            Мы понаписали такой код. А теперь посмотрим как его видит интерпретатор
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <pre class="javascript">
+                <code>function(){</code>
+                <code>  var result = [];</code>
+                <code>  <mark>console.log(a);</mark></code>
+                <code>  for (var i = 0; i < 10; i++) {</code>
+                <code>      var a = i*i;</code>
+                <code>      result.push(a);</code>
+                <code>  }</code>
+                <code>}</code>
+            </pre>
+        </div>
+        <div class="hidden">
+
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <pre class="javascript">
+                <code>function(){</code>
+                <code>  var result, i, a;</code>
+                <code>  result = [];</code>
+                <code>  for (i = 0; i < 10; i += 1) {</code>
+                <code>      a = i*i;</code>
+                <code>      result.push(a);</code>
+                <code>  }</code>
+                <code>}</code>
+            </pre>
+        </div>
+        <div class="hidden">
+
+        </div>
+    </div></section>
+    <section class="slide"><div>
+    <div>
+            <pre class="javascript">
+            <code>function runMe() {</code>
+            <code>   var b = 5;</code>
+            <code>   function c() {</code>
+            <code>      console.log(b);</code>
+            <code>   }</code>
+            <code>   c();</code>
+            <code>}</code>
+            </pre>
+    </div>
+    <div class="hidden">
+    </div>
+    </div></section>
+    <section class="slide"><div>
+    <div>
+            <pre class="javascript">
+            <code>function runMe() {</code>
+            <code>   var b = 5;</code>
+            <code>   function c() {</code>
+            <code>      console.log(b);</code>
+            <code>   }</code>
+            <code>   c();<mark> //5</mark></code>
+            <code>}</code>
+            </pre>
+    </div>
+    <div class="hidden">
+    </div>
+    </div></section>
+
+    <section class="slide"><div>
+        <div>
+            <pre class="javascript">
+            <code>function runMe() {</code>
+            <code>   var b = 5;</code>
+            <code>   c();<mark>// 5</mark></code>
+            <code>   function c() {</code>
+            <code>      console.log(b);</code>
+            <code>   }</code>
+            <code>}</code>
+            </pre>
+        </div>
+    </div></section>
+
+    <section class="slide"><div>
+        <div>
+            <pre class="javascript">
+            <code>function runMe() {</code>
+            <code>   var b = 5;</code>
+            <code>   c();</code>
+            <code>   var c = function () {</code>
+            <code>      console.log(b);</code>
+            <code>   }</code>
+            <code>}</code>
+            </pre>
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <pre class="javascript">
+            <code>function runMe() {</code>
+            <code>   var b = 5;</code>
+            <code>   c();<span style="color:red;">// Uncaught TypeError: undefined is not a function </span></code>
+            <code>   var c = function () {</code>
+            <code>      console.log(b);</code>
+            <code>   }</code>
+            <code>}</code>
+            </pre>
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <img src="pictures/magic.jpeg" alt="" class="img-cover" style="margin:0 0 0 50px;width: 80%;">
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <pre class="javascript">
+            <code>var b = 7;</code>
+            <code>...</code>
+            <code>function runMe() {</code>
+            <code>   console.log(b);</code>
+            <code>   var b = 5;</code>
+            <code>   console.log(b);</code>
+            <code>}</code>
+            <code>runMe();</code>
+            </pre>
+
+        </div>
+        <div class="hidden">
+            типа что будет?
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <pre class="javascript">
+            <code>var b = 7;</code>
+            <code>..</code>
+            <code>function runMe() {</code>
+            <code>   var b;</code>
+            <code>   console.log(b);<mark> //undefined;</mark></code>
+            <code>   b = 5;</code>
+            <code>   console.log(b);<mark> //5;</mark></code>
+            <code>}</code>
+            <code>runMe();</code>
+            </pre>
+
+        </div>
+        <div class="hidden">
+            Многие разработчики рекомендуют стайл выписывать вверх  и инструменты для проверки. Настраиваемый
+        </div>
+    </div></section>
+
+    <section class="slide"><div>
+        <div>
+            <ol style="font-size: 40px;">
+                <li><a href="http://www.jslint.com" style="margin-bottom: 30px;">http://www.jslint.com</a></li>
+                <li class="next"><a href="http://www.jshint.com" style="margin-bottom: 30px;">http://jshint.com/</a></li>
+            </ol>
+        </div>
+        <div class="hidden">
+        </div>
+    </div></section>
+    <section class="slide" class="img-cover" style="background: url('pictures/closure.jpg'); background-size: cover "><div>
+        <h2 style="color: #fff;">
+            Замыкание. Closure
+        </h2>
+        <div class="hidden">
+            Замыкание - это область действия, которая создается в момент объявления функции и позволяет получить
+            доступ и манипулировать внешними по отношению к ней перемннными
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+         <pre class="javascript">
+            <code>function outer()</code>
+			<code>  var a = 1;</code>
+			<code>  function inner() {</code>
+			<code>      var b = 2;</code>
+			<code>      if (a === 1) {</code>
+			<code>          var c = 3;</code>
+            <code>      }</code>
+            <code>      console.log(a + b + c);</code>
+            <code>  }</code>
+            <code>}</code>
+            <code>outer();</code>
 		</pre>
-	</div></section>
-	<section class="slide"><div>
-		<h2>Even Tables</h2>
-		<table>
-		<tr>
-			<th scope="col">Locavore</th>
-			<th>Umami</th>
-			<th>Helvetica</th>
-			<th>Vegan</th>
-		</tr>
-		<tr>
-			<th scope="row">Fingerstache</th>
-			<td>Kale</td>
-			<td>Chips</td>
-			<td>Keytar</td>
-		</tr>
-		<tr>
-			<th scope="row">Sriracha</th>
-			<td>Gluten-free</td>
-			<td>Ennui</td>
-			<td>Keffiyeh</td>
-		</tr>
-		<tr>
-			<th scope="row">Thundercats</th>
-			<td>Jean</td>
-			<td>Shorts</td>
-			<td>Biodiesel</td>
-		</tr>
-		<tr>
-			<th scope="row">Terry</th>
-			<td>Richardson</td>
-			<td>Swag</td>
-			<td>Blog</td>
-		</tr>
-		</table>
-		<p>It’s good to have information organized.</p>
-	</div></section>
-	<section class="slide cover" id="Picture"><div>
-		<h2>Pictures</h2>
-		<img src="pictures/picture.jpg" alt="">
-		<style>
-			#Picture h2 {
-				color:#FFF;
-				}
-		</style>
-	</div></section>
-	<section class="slide shout"><div>
-		<h2>You can even shout this way</h2>
-	</div></section>
-	<section class="slide"><div>
-		<h2>Inner Navigation</h2>
-		<ol>
-			<li>Lets you reveal list items one by one</li>
-			<li class="next">To keep some key points</li>
-			<li class="next">In secret from audience</li>
-			<li class="next">But it will work only once</li>
-			<li class="next">Nobody wants to see the same joke twice</li>
-		</ol>
-	</div></section>
-	<section class="slide shout" id="SeeMore"><div>
-		<h2><img src="pictures/logo.svg" alt=""> <a href="https://github.com/shower/shower">See more on GitHub</a></h2>
-		<style>
-			#Picture h2 {
-				color:#FFF;
-				}
-			#SeeMore h2 {
-				font-size:100px
-				}
-			#SeeMore img {
-				width:0.72em;
-				height:0.72em;
-				}
-		</style>
-	</div></section>
-	<p class="badge"><a href="https://github.com/shower/shower">Fork me on Github</a></p>
+
+        </div>
+        <div class="hidden">
+            показали пример но не показали для чего можно использовать замыкание
+            во время лексического парсинга создаются области видимости-скоуп  - зашел - создал новую
+            + захватываются переменные из вне -> в этот же момент создается замыкание
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+        <pre class="javascript">
+            <code>function outer()</code>
+			<code>  var a = 1;</code>
+			<code>  function inner() {</code>
+			<code>      var b = 2;</code>
+			<code>      if (a === 1) {</code>
+			<code>          var c = 3;</code>
+            <code>      }</code>
+            <code>      console.log(a + b + c);<mark>// 6</mark></code>
+            <code>  }</code>
+            <code>}</code>
+            <code>outer();</code>
+		</pre>
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <style>
+            ol li {
+                margin-bottom: 30px;
+            }
+        </style>
+        <div>
+            <h2 style="top: 100px; left: 0; margin: 0 0 37px; position: static;">Что происходит во время создания функции?</h2>
+            <ol>
+                <li>Регистрация объявлений переменных (эффект "всплытия")</li>
+                <li>Происходит создание scope/области видимости</li>
+                <li>Добавляется ссылка на внешний scope</li>
+            </ol>
+        </div>
+        <div class="hidden">
+            Лексический парсер
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <pre class="javascript">
+                <code>function Card() {</code>
+                <code>    var serial = 0;</code>
+                <code>    this.getSerial = function(){</code>
+                <code>         return serial;</code>
+                <code>    };</code>
+                <code>    this.serial = function(){</code>
+                <code>        serial++;</code>
+                <code>    };</code>
+                <code>}</code>
+            </pre>
+        </div>
+        <div class="hidden">
+            На практике используется для инкапсуляции, создания частных переменных
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <pre class="javascript">
+                <code>function Card() {</code>
+                <code>    <mark class="important">var serial</mark> = 0;</code>
+                <code>    this.getSerial = function(){</code>
+                <code>         return serial;</code>
+                <code>    };</code>
+                <code>    <mark class="important">this.serial</mark> = function(){</code>
+                <code>        serial++;</code>
+                <code>    };</code>
+                <code>}</code>
+            </pre>
+        </div>
+        <div class="hidden">
+            Все понимают что это разные вещи? Одна переменная, другая свойство объекта
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+        <pre class="javascript">
+			<code>function create(arr) {</code>
+            <code>    var _arr = arr.concat([]),</code>
+			<code>        i = 0;</code>
+			<code>    return function () {</code>
+            <code>        if (i === _arr.length)</code>
+            <code>           return;</code>
+            <code>        return _arr[i++];</code>
+            <code>    }</code>
+            <code>}</code>
+            <code>var next = create([10, 20, 30]);</code>
+		</pre>
+        </div>
+        <div class="hidden">
+            Важно чтобыы никто не мог повлиять то на что вы итерируете
+            повлиять и поменять нельзя
+
+            будет работать медленне чем обычный пробег
+            офигеть как  медленно если накопипастите если большой вложенный объект)
+            но иногда бывает необходимо
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <pre class="javascript">
+                <code>var arr = [];</code>
+                <code>for (var i = 0; i < 10; i++ ) {</code>
+                <code>    arr.push(function(){</code>
+                <code>        return i;</code>
+                <code>    });</code>
+                <code>}   </code>
+                <code>for (var j = 0; j < 10; j++) {</code>
+                <code>        console.log(arr[j]());</code>
+                <code>}</code>
+            </pre>
+        </div>
+        <div class="hidden">
+            что выдаст этот ответ?  Как исправить? Даешь время на подумать 1мин
+            Объяснить почему не работает
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <pre class="javascript">
+                <code>var arr = [];</code>
+                <code>for (var i = 0; i < 10; i++ ) {</code>
+                <code>  arr.push(function(){</code>
+                <code>      return i;</code>
+                <code>  });</code>
+                <code>}    </code>
+                <code>for (var j = 0; j < 10; j++) {</code>
+                <code>  console.log(arr[j]());</code>
+                <code>  <mark>>> 10,10,10,10,10,10,10,10,10,10</mark></code>
+                <code>}</code>
+            </pre>
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <pre class="javascript">
+                <code>var arr = [];</code>
+                <code>for (var i = 0; i < 10; i++ ) {</code>
+                <code>  arr.push(function(){</code>
+                <code>      var k = i;</code>
+                <code>      return i;</code>
+                <code>  });</code>
+                <code>}    </code>
+                <code>for (var j = 0; j < 10; j++) {</code>
+                <code>  console.log(arr[j]());</code>
+                <code>  <mark>>> 10,10,10,10,10,10,10,10,10,10 !!!!</mark></code>
+                <code>}</code>
+            </pre>
+        </div>
+    </div></section>
+    <section class="slide" class="img-cover" style="background: url('pictures/vandam.png'); background-size: cover "><div>
+        <div class="hidden">
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+
+            <img src="pictures/scope1.png" alt="" class="img-cover" style="width: 80%;margin: 50px;">
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <pre class="javascript">
+                <code>var arr = [];</code>
+                <code>for (var i = 0; i < 10; i++ ) {</code>
+                <code>  arr.push(function(){</code>
+                <code>      return i;</code>
+                <code>  });</code>
+                <code>}    </code>
+                <mark class="important">// i=10;</mark>
+                <code>for (var j = 0; j < 10; j++) {</code>
+                <code>  console.log(arr[j]());</code>
+                <code>}</code>
+            </pre>
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <pre class="javascript">
+            <code>var arr = [];</code>
+            <code>for (var i = 0; i < 10; i++ ) {</code>
+            <code>  (function() {</code>
+            <code>      var k = i;</code>
+            <code>      arr.push(function(){ return k; });</code>
+            <code>  }());</code>
+            <code>}</code>
+            <code>for (var j = 0; j < 10; j++) {</code>
+            <code>  console.log(arr[j]()); </code>
+            <code>}</code>
+            </pre>
+        </div>
+        <div class="hidden">
+            C таким синтаксисом вы наверное еще не сталкивались) Это самовызывающиеся функции/немедленно исполняющиеся фции
+            создается ссылка на скоуп и копируется переменная
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <pre class="javascript">
+            <code>var arr = [];</code>
+            <code>for (var i = 0; i < 10; i++ ) {</code>
+            <code>  (function() {</code>
+            <code>      var k = i;</code>
+            <code>      arr.push(function(){ return k; });</code>
+            <code>  }());</code>
+            <code>}</code>
+            <code>for (var j = 0; j < 10; j++) {</code>
+            <code>  console.log(arr[j]()); <mark>>> 0, 1, 2, 3, 4, 5, 6, 7, 8, 9</mark></code>
+            <code>}</code>
+            </pre>
+        </div>
+        <div class="hidden">
+            Ответ
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <pre class="javascript">
+            <code>var arr = [];</code>
+            <code>for (var i = 0; i < 10; i++ ) {</code>
+            <code>  <mark class="important">(function() {</mark></code>
+            <code>      var k = i;</code>
+            <code>      arr.push(function(){ return k; });</code>
+            <code>  <mark class="important">}());</mark></code>
+            <code>}</code>
+            <code>for (var j = 0; j < 10; j++) {</code>
+            <code>  </code>console.log(arr[j]()); <mark>>> 0, 1, 2, 3, 4, 5, 6, 7, 8, 9</mark></code>
+            <code>}</code>
+            </pre>
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <img src="pictures/scope2.png" alt="" class="img-cover" style="width: 100%;margin: 0 30px;">
+        </div>
+        <div class="hidden">
+            ПРи вызове функции создается scope.
+            скоуп - табличка с локальными обьявленными переменными и ставит ссылку на внешний скоуп дл виндоу
+            при попытке обращаения - алгоритм поиска
+            не делаяйте сильно вложенные функции
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Immediatly-Invoked Function Expression IIFE</h2>
+        <div>
+            <pre class="javascript">
+            <code>var arr = [];</code>
+            <code>for (var i = 0; i < 10; i++ ) {</code>
+            <code>  <mark class="important">function() {</mark></code>
+            <code>      var k = i;</code>
+            <code>      arr.push(function(){ return k; });</code>
+            <code>  <mark class="important">}());</mark></code>
+            <code>}</code>
+            <code>for (var j = 0; j < 10; j++) {</code>
+            <code>  console.log(arr[j]()); </code>
+            <code>}</code>
+            </pre>
+        </div>
+        <div class="hidden">
+            Самовызывающиеся,  немедленно исполняющиеся функции
+            Вызываются, исполняются, создают скоуп, функция после вызова удаляется
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Immediatly-Invoked Function Expression IIFE</h2>
+        <div>
+            <pre class="javascript">
+            <code>(function(){}())</code>
+            <code>(function(){})()</code>
+            </pre>
+        </div>
+        <div class="hidden">
+           Помните?
+        </div>
+    </div></section>
+
+    <section class="slide"><div>
+        <div>
+            <pre class="javascript">
+                <code>var arr = [];</code>
+                <code>for (var i = 0; i < 10; i++ ) {</code>
+                <code>  arr.push(function(){</code>
+                <code>      return i;</code>
+                <code>  });</code>
+                <code>}</code>
+                <code>for (var i = 20; i < 30; i++) {</code>
+                <code>  console.log(arr[i - 20]());</code>
+                <code>}</code>
+            </pre>
+        </div>
+        <div class="hidden">
+            проверим как поняли
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <pre class="javascript">
+            <code>var arr = [];</code>
+            <code>for (var i = 0; i < 10; i++ ) {</code>
+            <code>  arr.push(function(){</code>
+            <code>      return i;</code>
+            <code>  });</code>
+            <code>}</code>
+            <code>for (var i = 20; i < 30; i++) {</code>
+            <code>  console.log(arr[i - 20]());<mark class="comment">>> 20, 21, 22, 23, 24, 25, 26, 27, 28, 29</mark></code>
+            <code>}</code>
+
+            </pre>
+        </div>
+        <div class="hidden">
+            Ответ
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <pre class="javascript">
+            <code>var arr = [],</code>
+            <code>  i;</code>
+            <code>for (i = 0; i < 10; i++ ) {</code>
+            <code>  arr.push(function(){</code>
+            <code>      return i;</code>
+            <code>  });</code>
+            <code>}</code>
+            <code>for (i = 20; i < 30; i++) {</code>
+            <code>  console.log(arr[i - 20]());</code>
+            <code>}</code>
+            </pre>
+        </div>
+        <div class="hidden">
+            обьявления всплыли и все это одна переменная
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <pre class="javascript">
+            <code>var arr = [],</code>
+            <code>  <mark class="important">i</mark>;</code>
+            <code>for (<mark class="important">i</mark> = 0; i < 10; i++ ) {</code>
+            <code>  arr.push(function(){</code>
+            <code>      return i;</code>
+            <code>  });</code>
+            <code>}</code>
+            <code>for (<mark class="important">i</mark> = 20; i < 30; i++) {</code>
+            <code>  console.log(arr[i - 20]());</code>
+            <code>}</code>
+            </pre>
+        </div>
+        <div class="hidden">
+            одно и то же i
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <ol>
+                <li>Всплытие</li>
+                <li>Замыкание</li>
+            </ol>
+        </div>
+        <div class="hidden">
+            одно и то же i
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <h2 class="top">This</h2>
+            <ul>
+                <li>Обычный вызов</li>
+                <li>Вызов в контексте метода</li>
+                <li>Вызов в режиме конструктора</li>
+                <li>Подмена this и фиксация контекста</li>
+            </ul>
+        </div>
+        <div class="hidden">
+            Рассказать про мнемоническое правило. что this это правильно context
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <h2 class="top">Обычный вызов</h2>
+            <pre class="javascript">
+                <code>var runMe = function(){</code>
+                <code>  console.log(this);</code>
+                <code>};</code>
+            </pre>
+        </div>
+        <div class="hidden">
+        </div>
+    </div></section>
+    <section class="slide"><div>
+        <div>
+            <h2 class="top">Вызов в контексте "метода"</h2>
+            <pre class="javascript">
+                <code>var person = {</code>
+                <code>  sums</code>
+                <code>  console.log(this);</code>
+                <code>};</code>
+            </pre>
+        </div>
+        <div class="hidden">
+        </div>
+    </div></section>
 	<!--
 		To hide progress bar from entire presentation
 		just remove “progress” element.
 		-->
 	<div class="progress"><div></div></div>
-	<script src="node_modules/shower-core/shower.min.js"></script>
+
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/highlight.min.js"></script>
+    <script src="./js/shower/shower.min.js"></script>
+    <script src="./js/index.js"></script>
 	<!-- Copyright © 2014 Yours Truly, Famous Inc. -->
 	<!-- Photos by John Carey, fiftyfootshadows.net -->
 </body>
